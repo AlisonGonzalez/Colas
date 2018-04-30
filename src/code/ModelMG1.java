@@ -20,14 +20,20 @@ public class ModelMG1 {
     // Capacidad
     public int n;
     
+    //Costo
+    public double cw, cs, ct;
+    
     // Modelo M/G/1
-    public ModelMG1(double _lambda, double _mu, int _n, double _sigma) {
+    public ModelMG1(double _lambda, double _mu, int _n, double _sigma, double _cw, double _cs) {
         lambda = _lambda;
         mu = _mu;
         ro = lambda / mu;
         n = _n;
         sigma = _sigma;
+        cw = _cw;
+        cs = _cs;
         calculate();
+        ct = calculateCost();
     }
     
     
@@ -49,7 +55,9 @@ public class ModelMG1 {
             w = w();
         }
     }
-    
+    public double calculateCost(){
+        return ((lq * cw) + cs);
+    }
     
     // Lq
     private double lq() {

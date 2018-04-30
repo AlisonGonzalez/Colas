@@ -20,15 +20,21 @@ public class ModelMMsK {
     // s, K y capacidad
     public int servers, k, n;
     
+    //Costo
+    public double cw, cs, ct;
+    
     // Modelo M/M/s/k
-    public ModelMMsK(double _lambda, double _mu, int _n, int _servers, int _k){
+    public ModelMMsK(double _lambda, double _mu, int _n, int _servers, int _k, double _cw, double _cs){
         lambda = _lambda;
         mu = _mu;
         servers = _servers;
         ro = lambda / (servers * mu);
         n = _n;
         k = _k;
+        cw = _cw;
+        cs = _cs;
         calculate();
+        ct = calculateCost();
     }
     
     // Estabilidad del sistema
@@ -48,6 +54,9 @@ public class ModelMMsK {
             w = w();
             l = l();
         }
+    }
+    public double calculateCost(){
+        return ((lq * cw) + (servers * cs));
     }
     
     // Lq

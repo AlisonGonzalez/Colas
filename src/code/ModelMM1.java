@@ -20,13 +20,19 @@ public class ModelMM1 {
     // Capacidad
     public int n;
     
+    //Costo
+    public double cw, cs, ct;
+    
     // Modelo M/M/1
-    public ModelMM1(double _lambda, double _mu, int _n) {
+    public ModelMM1(double _lambda, double _mu, int _n, double _cw, double _cs) {
         lambda = _lambda;
         mu = _mu;
         ro = lambda / mu;
         n = _n;
+        cw = _cw;
+        cs = _cs;
         calculate();
+        ct = calculateCost();
     }
     
     // Estabilidad del sistema
@@ -46,6 +52,9 @@ public class ModelMM1 {
             wq = wq();
             w = w();
         }
+    }
+    public double calculateCost(){
+        return ((lq * cw) + cs);
     }
     
     // Lq

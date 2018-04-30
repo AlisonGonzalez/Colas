@@ -37,12 +37,25 @@ public class Main extends javax.swing.JFrame {
         }
     }
     
+    private boolean isValidCost(String number) {
+        try {
+            Double.parseDouble(number);
+            return isCostPositive(Double.parseDouble(number));
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+    
     private boolean isNumberPositive(int n){
         return n >= 0;
     }
     
     private boolean isFloatPositive(double d){
         return d > 0.0;
+    }
+    
+    private boolean isCostPositive(double d){
+        return d >= 0.0;
     }
     /**
      * Creates new form Main
@@ -92,6 +105,12 @@ public class Main extends javax.swing.JFrame {
         kLabel = new javax.swing.JLabel();
         kInput = new javax.swing.JTextField();
         calculateButton = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JSeparator();
+        cwLabel = new javax.swing.JLabel();
+        cwInput = new javax.swing.JTextField();
+        csInput = new javax.swing.JTextField();
+        csLabel = new javax.swing.JLabel();
+        jSeparator4 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
         TitleLabel = new javax.swing.JLabel();
         roLabel = new javax.swing.JLabel();
@@ -104,6 +123,10 @@ public class Main extends javax.swing.JFrame {
         cnLabel = new javax.swing.JLabel();
         effectiveLambdaLabel = new javax.swing.JLabel();
         oneMinusP0Label = new javax.swing.JLabel();
+        costLabel = new javax.swing.JLabel();
+        jSeparator5 = new javax.swing.JSeparator();
+        jSeparator6 = new javax.swing.JSeparator();
+        jSeparator7 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -204,56 +227,91 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        cwLabel.setForeground(new java.awt.Color(255, 255, 255));
+        cwLabel.setText("Cw:");
+
+        cwInput.setMinimumSize(new java.awt.Dimension(80, 26));
+
+        csInput.setMinimumSize(new java.awt.Dimension(80, 26));
+        csInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                csInputActionPerformed(evt);
+            }
+        });
+
+        csLabel.setForeground(new java.awt.Color(255, 255, 255));
+        csLabel.setText("Cs:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(62, 62, 62)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(nLabel)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(lambdaLabel)
+                                            .addComponent(muLabel))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(sigmaInput, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(nInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(lambdaInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(muInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(kLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(kInput))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(sLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(sInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(45, 45, 45)
+                                .addComponent(jLabel1))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(52, 52, 52)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cwLabel)
+                                    .addComponent(csLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cwInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(csInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator3)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(mmsRadioButton)
+                                    .addComponent(mm1RadioButton)
+                                    .addComponent(mmskRadioButton)
+                                    .addComponent(mg1RadioButton)
+                                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(15, 15, 15)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addComponent(calculateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addGap(19, 19, 19))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(sigmaLabel)
                 .addGap(152, 152, 152))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nLabel)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lambdaLabel)
-                                    .addComponent(muLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(sigmaInput, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(nInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lambdaInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(muInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(kLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(kInput))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(sLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(sInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(mmsRadioButton)
-                            .addComponent(mm1RadioButton)
-                            .addComponent(mmskRadioButton)
-                            .addComponent(mg1RadioButton)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(calculateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -296,9 +354,21 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(kLabel)
                     .addComponent(kInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cwLabel)
+                    .addComponent(cwInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(csInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(csLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(calculateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                .addContainerGap())
         );
 
         TitleLabel.setFont(new java.awt.Font("Apple Braille", 0, 24)); // NOI18N
@@ -334,29 +404,46 @@ public class Main extends javax.swing.JFrame {
         oneMinusP0Label.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         oneMinusP0Label.setText("1 - P0:");
 
+        costLabel.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        costLabel.setText("CT:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(wqLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-                            .addComponent(lqLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(90, 90, 90)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(wLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)))
-                    .addComponent(TitleLabel)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(oneMinusP0Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
-                        .addComponent(roLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(p0Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(effectiveLambdaLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pnLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cnLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(42, 42, 42)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(effectiveLambdaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(207, 207, 207)
+                                .addComponent(oneMinusP0Label, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(TitleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(wqLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                                            .addComponent(lqLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(roLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(p0Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)))
+                                    .addGap(90, 90, 90)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(pnLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(cnLabel, javax.swing.GroupLayout.Alignment.LEADING))
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(lLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(wLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))))
+                                .addComponent(jSeparator5)
+                                .addComponent(jSeparator6)
+                                .addComponent(jSeparator7))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(257, 257, 257)
+                        .addComponent(costLabel)))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -364,27 +451,38 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(TitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lqLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lqLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                    .addComponent(lLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(48, 48, 48)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(wqLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(wLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(64, 64, 64)
-                .addComponent(roLabel)
-                .addGap(24, 24, 24)
-                .addComponent(p0Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(24, 24, 24)
-                .addComponent(pnLabel)
-                .addGap(28, 28, 28)
-                .addComponent(cnLabel)
-                .addGap(26, 26, 26)
-                .addComponent(effectiveLambdaLabel)
-                .addGap(18, 18, 18)
-                .addComponent(oneMinusP0Label)
-                .addGap(37, 37, 37))
+                .addGap(27, 27, 27)
+                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(pnLabel)
+                        .addGap(28, 28, 28)
+                        .addComponent(cnLabel)
+                        .addGap(45, 45, 45)
+                        .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(costLabel)
+                        .addGap(35, 35, 35)
+                        .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(effectiveLambdaLabel)
+                            .addComponent(oneMinusP0Label))
+                        .addGap(57, 57, 57))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(roLabel)
+                        .addGap(24, 24, 24)
+                        .addComponent(p0Label, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -399,10 +497,8 @@ public class Main extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -413,6 +509,8 @@ public class Main extends javax.swing.JFrame {
         muInput.setText("");
         lambdaInput.setText("");
         nInput.setText("");
+        cwInput.setText("");
+        csInput.setText("");
         
         sLabel.setVisible(true);
         sInput.setVisible(true);
@@ -437,6 +535,8 @@ public class Main extends javax.swing.JFrame {
         muInput.setText("");
         lambdaInput.setText("");
         nInput.setText("");
+        cwInput.setText("");
+        csInput.setText("");
         
         sigmaLabel.setVisible(false);
         sigmaInput.setVisible(false);
@@ -461,21 +561,25 @@ public class Main extends javax.swing.JFrame {
 
     private void calculateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateButtonActionPerformed
         // TODO add your handling code here:
-        Double mu = 0.0, lambda = 0.0, sigma = 0.0;
+        Double mu = 0.0, lambda = 0.0, sigma = 0.0, cw = 0.0, cs = 0.0, ct = 0.0;
         int n = 0, k = 0, s = 0;
         if (mm1RadioButton.isSelected()) {
             if(isFloat(muInput.getText()) &&
                     isFloat(lambdaInput.getText()) &&
-                    isNumber(nInput.getText())) {
+                    isNumber(nInput.getText()) &&
+                    isValidCost(cwInput.getText()) &&
+                    isValidCost(csInput.getText())) {
                 mu = Double.parseDouble(muInput.getText());
                 lambda = Double.parseDouble(lambdaInput.getText());
                 n = Integer.parseInt(nInput.getText());
+                cw = Double.parseDouble(cwInput.getText());
+                cs = Double.parseDouble(csInput.getText());
                 
                 if(mu <= lambda){
                     JFrame frame = new JFrame("Alerta");
                     JOptionPane.showMessageDialog(frame, "El sistema no es estable.");
                 } else {
-                    ModelMM1 model = new ModelMM1(lambda, mu, n);
+                    ModelMM1 model = new ModelMM1(lambda, mu, n, cw, cs);
                     
                     lqLabel.setText("Lq: "+round(model.lq));
                     lLabel.setText("L: "+round(model.l));
@@ -486,6 +590,8 @@ public class Main extends javax.swing.JFrame {
                     p0Label.setText("P0: "+round(model.p0));
                     pnLabel.setText("Pn: "+round(model.pn));
                     cnLabel.setText("Cn: "+round(model.cn));
+                    
+                    costLabel.setText("CT: "+round(model.ct));
                 }
             } else {
                 JFrame frame = new JFrame("Alerta");
@@ -497,17 +603,21 @@ public class Main extends javax.swing.JFrame {
             if(isFloat(muInput.getText()) &&
                     isFloat(lambdaInput.getText()) &&
                     isNumber(nInput.getText()) &&
-                    isNumber(sInput.getText())) {
+                    isNumber(sInput.getText()) &&
+                    isValidCost(cwInput.getText()) &&
+                    isValidCost(csInput.getText())) {
                 mu = Double.parseDouble(muInput.getText());
                 lambda = Double.parseDouble(lambdaInput.getText());
                 n = Integer.parseInt(nInput.getText());
                 s = Integer.parseInt(sInput.getText());
+                cw = Double.parseDouble(cwInput.getText());
+                cs = Double.parseDouble(csInput.getText());
                 
                 if(mu*s <= lambda){
                     JFrame frame = new JFrame("Alerta");
                     JOptionPane.showMessageDialog(frame, "El sistema no es estable.");
                 } else {
-                    ModelMMs model = new ModelMMs(lambda, mu, n, s);
+                    ModelMMs model = new ModelMMs(lambda, mu, n, s, cw, cs);
                     
                     lqLabel.setText("Lq: "+round(model.lq));
                     lLabel.setText("L: "+round(model.l));
@@ -518,6 +628,8 @@ public class Main extends javax.swing.JFrame {
                     p0Label.setText("P0: "+round(model.p0));
                     pnLabel.setText("Pn: "+round(model.pn));
                     cnLabel.setText("Cn: "+round(model.cn));
+                    
+                    costLabel.setText("CT: "+round(model.ct));
                 }
             } else {
                 JFrame frame = new JFrame("Alerta");
@@ -530,17 +642,22 @@ public class Main extends javax.swing.JFrame {
                     isFloat(lambdaInput.getText()) &&
                     isNumber(nInput.getText()) &&
                     isNumber(sInput.getText()) &&
-                    isNumber(kInput.getText())){
+                    isNumber(kInput.getText()) &&
+                    isValidCost(cwInput.getText()) &&
+                    isValidCost(csInput.getText())){
                 mu = Double.parseDouble(muInput.getText());
                 lambda = Double.parseDouble(lambdaInput.getText());
                 n = Integer.parseInt(nInput.getText());
                 s = Integer.parseInt(sInput.getText());
                 k = Integer.parseInt(kInput.getText());
+                cw = Double.parseDouble(cwInput.getText());
+                cs = Double.parseDouble(csInput.getText());
+                
                 if(mu*s <= lambda){
                     JFrame frame = new JFrame("Alerta");
                     JOptionPane.showMessageDialog(frame, "El sistema no es estable.");
                 } else {
-                    ModelMMsK model = new ModelMMsK(lambda, mu, n, s, k);
+                    ModelMMsK model = new ModelMMsK(lambda, mu, n, s, k, cw, cs);
                     
                     lqLabel.setText("Lq: "+round(model.lq));
                     lLabel.setText("L: "+round(model.l));
@@ -551,8 +668,11 @@ public class Main extends javax.swing.JFrame {
                     p0Label.setText("P0: "+round(model.p0));
                     pnLabel.setText("Pn: "+round(model.pn));
                     cnLabel.setText("Cn: "+round(model.cn));
+                    
                     effectiveLambdaLabel.setText("λe: "+round(model.effectiveLambda));
                     oneMinusP0Label.setText("1 - P0: "+round(1 - model.p0));
+                    
+                    costLabel.setText("CT: "+round(model.ct));
                 }
                 
             } else {
@@ -566,17 +686,21 @@ public class Main extends javax.swing.JFrame {
             if(isFloat(muInput.getText()) &&
                     isFloat(lambdaInput.getText()) &&
                     isNumber(nInput.getText()) &&
-                    isFloat(sigmaInput.getText())) {
+                    isFloat(sigmaInput.getText()) &&
+                    isValidCost(cwInput.getText()) &&
+                    isValidCost(csInput.getText())) {
                 mu = Double.parseDouble(muInput.getText());
                 lambda = Double.parseDouble(lambdaInput.getText());
                 n = Integer.parseInt(nInput.getText());
                 sigma = Double.parseDouble(sigmaInput.getText());
+                cw = Double.parseDouble(cwInput.getText());
+                cs = Double.parseDouble(csInput.getText());
                 
                 if(mu <= lambda){
                     JFrame frame = new JFrame("Alerta");
                     JOptionPane.showMessageDialog(frame, "El sistema no es estable.");
                 } else {
-                    ModelMG1 model = new ModelMG1(lambda, mu, n, sigma);
+                    ModelMG1 model = new ModelMG1(lambda, mu, n, sigma, cw, cs);
                     
                     lqLabel.setText("Lq: "+round(model.lq));
                     lLabel.setText("L: "+round(model.l));
@@ -587,6 +711,8 @@ public class Main extends javax.swing.JFrame {
                     p0Label.setText("P0: "+round(model.p0));
                     pnLabel.setText("Pn: "+round(model.pn));
                     cnLabel.setText("Cn: "+round(model.cn));
+                    
+                    costLabel.setText("CT: "+round(model.ct));
                 }
             } else {
                 JFrame frame = new JFrame("Alerta");
@@ -602,6 +728,8 @@ public class Main extends javax.swing.JFrame {
         muInput.setText("");
         lambdaInput.setText("");
         nInput.setText("");
+        cwInput.setText("");
+        csInput.setText("");
         
         sigmaLabel.setVisible(false);
         sigmaInput.setVisible(false);
@@ -623,6 +751,8 @@ public class Main extends javax.swing.JFrame {
         muInput.setText("");
         lambdaInput.setText("");
         nInput.setText("");
+        cwInput.setText("");
+        csInput.setText("");
         
         sigmaLabel.setVisible(true);
         sigmaInput.setVisible(true);
@@ -637,6 +767,10 @@ public class Main extends javax.swing.JFrame {
         effectiveLambdaLabel.setVisible(false);
         oneMinusP0Label.setVisible(false);
     }//GEN-LAST:event_mg1RadioButtonActionPerformed
+
+    private void csInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_csInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_csInputActionPerformed
 
     /**
      * @param args the command line arguments
@@ -678,12 +812,22 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton calculateButton;
     private javax.swing.JLabel cnLabel;
+    private javax.swing.JLabel costLabel;
+    private javax.swing.JTextField csInput;
+    private javax.swing.JLabel csLabel;
+    private javax.swing.JTextField cwInput;
+    private javax.swing.JLabel cwLabel;
     private javax.swing.JLabel effectiveLambdaLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
     private javax.swing.JTextField kInput;
     private javax.swing.JLabel kLabel;
     private javax.swing.JLabel lLabel;

@@ -20,14 +20,20 @@ public class ModelMMs {
     // s, K y capacidad
     public int servers, n;
     
+    //Costo
+    public double cw, cs, ct;
+    
     // Modelo M/M/s
-    public ModelMMs(double _lambda, double _mu, int _n, int _servers) {
+    public ModelMMs(double _lambda, double _mu, int _n, int _servers, double _cw, double _cs) {
         lambda = _lambda;
         mu = _mu;
         servers = _servers;
         ro = lambda / (servers * mu);
         n = _n;
+        cw = _cw;
+        cs = _cs;
         calculate();
+        ct = calculateCost();
     }
     
     // Estabilidad del sistema
@@ -46,6 +52,9 @@ public class ModelMMs {
             wq = wq();
             w = w();
         }
+    }
+    public double calculateCost(){
+        return ((lq * cw) + (servers * cs));
     }
     
     // Lq
