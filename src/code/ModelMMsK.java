@@ -67,22 +67,22 @@ public class ModelMMsK {
     }
     private double lq() {
         double res = lqMMs() * 
-                (1-Math.pow(ro, k - servers)-(k-servers)*
+                (1-(Math.pow(ro, k - servers))-((k-servers)*
                 (Math.pow(ro, k-servers))*
-                (1-ro));
+                (1-ro)));
         return res;
     }
     //L
     private double l(){
-        return effectiveLambda * w;
+        return (effectiveLambda * w);
     }
     //Wq
     private double wq(){
-        return lq / effectiveLambda;
+        return (lq / effectiveLambda);
     }
     //W
     private double w(){
-        return wq + (1/mu);
+        return (wq + (1/mu));
     }
     // Cn
     private double cn() {
@@ -90,8 +90,8 @@ public class ModelMMsK {
         if (n > 0 && n < servers) {
             res = Math.pow(lambda/mu, n) / factorial(n);
         } else if (n <= k) {
-            res = Math.pow(lambda/mu, n) / (factorial(servers)
-                    * Math.pow(servers, n - servers));
+            res = Math.pow(lambda/mu, n) / ((factorial(servers)
+                    * Math.pow(servers, n - servers)));
         }
         return res;
     }
@@ -117,9 +117,9 @@ public class ModelMMsK {
     
     // Lambda efectiva
     private double effectiveLambda(){
-        double pk = Math.pow(lambda/mu, k) / (factorial(servers)
-                    * Math.pow(servers, k - servers)) * p0;
-        double res = lambda * (1-pk);
+        double pk = (Math.pow(lambda/mu, k) / (factorial(servers)
+                    * Math.pow(servers, k - servers))) * p0;
+        double res = lambda * (1 - pk);
         return res;
     }
     
