@@ -78,7 +78,7 @@ public class ModelMMs {
     
     // Cn
     private double calculateCn() {
-        double res = 0;
+        double res = 1;
         if (n > 0 && n < servers) {
             res = Math.pow(lambda/mu, n) / factorial(n);
         } else if (n >= servers) {

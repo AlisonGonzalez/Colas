@@ -87,7 +87,7 @@ public class ModelMMsK {
     // Cn
     private double cn() {
         double res = 0;
-        if (n > 0 && n < servers) {
+        if (n >= 0 && n < servers) {
             res = Math.pow(lambda/mu, n) / factorial(n);
         } else if (n <= k) {
             res = Math.pow(lambda/mu, n) / ((factorial(servers)
@@ -112,7 +112,11 @@ public class ModelMMsK {
     
     // Pn
     private double pn() { 
-        return cn * p0;
+        if (n <= k) {
+            return cn * p0;
+        } else {
+            return 0;
+        }
     }
     
     // Lambda efectiva
