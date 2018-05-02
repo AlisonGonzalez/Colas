@@ -179,13 +179,11 @@ public class Main extends javax.swing.JFrame {
         lambdaLabel.setForeground(new java.awt.Color(255, 255, 255));
         lambdaLabel.setText("λ:");
 
-        lambdaInput.setLocation(new java.awt.Point(-32746, -32385));
         lambdaInput.setPreferredSize(new java.awt.Dimension(80, 26));
 
         sigmaLabel.setForeground(new java.awt.Color(255, 255, 255));
         sigmaLabel.setText("σ:");
 
-        sigmaInput.setLocation(new java.awt.Point(-32746, -32345));
         sigmaInput.setPreferredSize(new java.awt.Dimension(80, 26));
         sigmaInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,7 +194,6 @@ public class Main extends javax.swing.JFrame {
         sLabel.setForeground(new java.awt.Color(255, 255, 255));
         sLabel.setText("s:");
 
-        sInput.setLocation(new java.awt.Point(-32746, -32320));
         sInput.setPreferredSize(new java.awt.Dimension(80, 26));
         sInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -204,7 +201,6 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        nInput.setLocation(new java.awt.Point(-32746, -3265));
         nInput.setPreferredSize(new java.awt.Dimension(80, 26));
 
         nLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -213,7 +209,6 @@ public class Main extends javax.swing.JFrame {
         kLabel.setForeground(new java.awt.Color(255, 255, 255));
         kLabel.setText("K:");
 
-        kInput.setLocation(new java.awt.Point(-32746, -32295));
         kInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 kInputActionPerformed(evt);
@@ -285,7 +280,7 @@ public class Main extends javax.swing.JFrame {
                                     .addComponent(csLabel))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cwInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cwInput, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
                                     .addComponent(csInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
